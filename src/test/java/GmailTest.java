@@ -5,16 +5,22 @@ import pages.Menu;
 
 import static core.Helpers.getUniqueText;
 
+import core.Configuration;
+
 public class GmailTest extends BaseTest {
+
+    public static String mailSubject = getUniqueText("Letter");
+
+    static {
+        Configuration.timeout = 8;
+    }
 
     Gmail gmail = new Gmail(driver);
     Mails mails = new Mails(driver);
     Menu menu = new Menu(driver);
 
-    public static String mailSubject = getUniqueText("Letter");
-
     @Test
-    public void testSearchLifeCycle(){
+    public void testSearchLifeCycle() {
 
         gmail.visit();
         gmail.login(TestData.email, TestData.password);
