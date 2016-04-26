@@ -1,32 +1,35 @@
 import org.junit.Test;
+import pages.Gmail;
+import pages.Mails;
+import pages.Menu;
 
 import static core.Helpers.getUniqueText;
-import static pages.Gmail.*;
-import static pages.Mails.*;
-import static pages.Menu.*;
 
 public class GmailTest extends BaseTest {
 
-    public static String mailSubject = getUniqueText("Letter");
+    Gmail gmail = new Gmail(driver);
+    Mails mails = new Mails(driver);
+    Menu menu = new Menu(driver);
 
+    public static String mailSubject = getUniqueText("Letter");
 
     @Test
     public void testSearchLifeCycle(){
 
-        open();
-        login(TestData.email, TestData.password);
-        send(TestData.email, mailSubject);
+        gmail.visit();
+        gmail.login(TestData.email, TestData.password);
+        mails.send(TestData.email, mailSubject);
 
-        refresh();
-        assertMail(0, mailSubject);
+        menu.refresh();
+        mails.assertMail(0, mailSubject);
 
-        goToSent();
-        assertMail(0, mailSubject);
+        menu.goToSent();
+        mails.assertMail(0, mailSubject);
 
-        goToInbox();
-        searchBySubject(mailSubject);
+        menu.goToInbox();
+        mails.searchBySubject(mailSubject);
 
-        assertMails(mailSubject);
+        mails.assertMails(mailSubject);
 
     }
 

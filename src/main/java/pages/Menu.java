@@ -1,22 +1,26 @@
 package pages;
 
 
+import core.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 
-import static core.ConciseAPI.$;
 
-public class Menu {
+public class Menu extends BasePage  {
 
-    public static void refresh() {
+    public Menu(WebDriver driver) {
+        super(driver);
+    }
+
+    public void refresh() {
         $(".asf").click();
     }
 
-    public static void goToInbox() {
+    public void goToInbox() {
         $("a[title^='Inbox']").click();
     }
 
-    public static void goToSent() {
+    public void goToSent() {
         $(By.linkText("Sent Mail")).click();
     }
 }

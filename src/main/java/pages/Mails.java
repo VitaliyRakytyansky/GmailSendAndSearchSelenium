@@ -23,7 +23,7 @@ public class Mails extends BasePage {
     }
 
 
-    public static void send(String email, String mailSubject) {
+    public void send(String email, String mailSubject) {
         $(byText("COMPOSE")).click();
         $(By.name("to")).sendKeys(email + Keys.ENTER);
         $(By.name("subjectbox")).sendKeys(mailSubject);
@@ -32,15 +32,15 @@ public class Mails extends BasePage {
 
 
 
-    public static void searchBySubject(String subjectText) {
+    public  void searchBySubject(String subjectText) {
         $(By.name("q")).sendKeys("subject: " + subjectText, Keys.ENTER);
     }
 
-    public static void assertMail(int index, String emailAttributeText) {
+    public void assertMail(int index, String emailAttributeText) {
         assertThat(nthElementContainsText(mails, index, emailAttributeText));
     }
 
-    public static  void assertMails(String... emailAttributeTexts) {
+    public  void assertMails(String... emailAttributeTexts) {
         assertThat(textsOf(mails, emailAttributeTexts));
     }
 

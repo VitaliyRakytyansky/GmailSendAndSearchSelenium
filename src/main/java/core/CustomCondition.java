@@ -1,9 +1,7 @@
 package core;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +12,9 @@ import java.util.List;
  */
 public class CustomCondition {
 
-    public static ExpectedCondition<List> textsOf(final List<WebElement> elements, final String... expectedTexts){
-        return new ExpectedCondition<List>() {
+    public static ExpectedCondition<List<WebElement>> textsOf(final List<WebElement> elements,
+                                                              final String... expectedTexts){
+        return new ExpectedCondition<List<WebElement>>() {
 
             private ArrayList<String> actualTexts;
 
@@ -43,7 +42,8 @@ public class CustomCondition {
         };
     }
 
-    public static ExpectedCondition<WebElement> nthElementContainsText(final List<WebElement> elements, final int index, final String expectedText){
+    public static ExpectedCondition<WebElement> nthElementContainsText(final List<WebElement> elements,
+                                                                       final int index, final String expectedText){
         return new ExpectedCondition<WebElement>() {
 
             private String actualText;

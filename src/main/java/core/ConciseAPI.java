@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 /**
@@ -16,36 +14,37 @@ public abstract class ConciseAPI {
 
     public abstract WebDriver getWebDriver();
 
-    public static WebElement assertThat(ExpectedCondition condition, int timeout) {
+    public <V> V assertThat(ExpectedCondition<V> condition) {
+        return assertThat(condition, Configuration.timeout);
+    }
+
+    public <V> V assertThat(ExpectedCondition<V> condition, int timeout) {
         return (new WebDriverWait(getWebDriver(), timeout).until(condition));
     }
 
-    public static WebElement assertThat(ExpectedCondition condition){
-        return assertThat(condition, 4);
-    }
-
-    public static WebElement $(String cssSelector){
-        return $(byCss(cssSelector));
-    }
-
-    public static WebElement $(By locator){
+    public WebElement $(By locator) {
         return assertThat(visibilityOfElementLocated(locator));
     }
 
-    public static WebElement $(WebElement element){
-        return assertThat(visibilityOf(element));
+    public WebElement $(String cssSelector) {
+        return $(byCss(cssSelector));
     }
 
-    public static By byCss(String cssSelector){
+    public By byCss(String cssSelector) {
         return By.cssSelector(cssSelector);
     }
 
-    public static By byText(String text) {
+    public By byExactText(String text) {
+        return By.xpath(".//*[text()='" + text + "']");
+    }
+
+    public By byText(String text) {
         return By.xpath(".//*[contains(text(),'" + text + "')]");
     }
 
-    public void open(){
-        getWebDriver().get("http://gmail.com");
+    public void open(String url) {
+        getWebDriver().get(url);
     }
-
 }
+
+
