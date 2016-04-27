@@ -2,9 +2,7 @@ import org.junit.Test;
 import pages.Gmail;
 import pages.Mails;
 import pages.Menu;
-
 import static core.Helpers.getUniqueText;
-
 import core.Configuration;
 
 public class GmailTest extends BaseTest {

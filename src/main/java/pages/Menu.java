@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
-public class Menu extends BasePage  {
+public class Menu extends BasePage {
 
     public Menu(WebDriver driver) {
         super(driver);

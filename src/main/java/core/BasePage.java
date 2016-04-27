@@ -11,7 +11,6 @@ public class BasePage extends ConciseAPI {
         this.driver = driver;
     }
 
-
     @Override
     public WebDriver getWebDriver() {
         return driver;

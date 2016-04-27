@@ -2,7 +2,6 @@ package pages;
 
 import core.BasePage;
 import org.openqa.selenium.Keys;
-
 import org.openqa.selenium.WebDriver;
 
 public class Gmail extends BasePage {

@@ -13,7 +13,7 @@ import java.util.List;
 public class CustomCondition {
 
     public static ExpectedCondition<List<WebElement>> textsOf(final List<WebElement> elements,
-                                                              final String... expectedTexts){
+                                                              final String... expectedTexts) {
         return new ExpectedCondition<List<WebElement>>() {
 
             private ArrayList<String> actualTexts;
@@ -43,7 +43,7 @@ public class CustomCondition {
     }
 
     public static ExpectedCondition<WebElement> nthElementContainsText(final List<WebElement> elements,
-                                                                       final int index, final String expectedText){
+                                                                       final int index, final String expectedText) {
         return new ExpectedCondition<WebElement>() {
 
             private String actualText;

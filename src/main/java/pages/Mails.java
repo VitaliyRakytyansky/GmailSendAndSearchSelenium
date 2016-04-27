@@ -1,6 +1,4 @@
 package pages;
-
-import static core.ConciseAPI.*;
 import static core.CustomCondition.nthElementContainsText;
 import static core.CustomCondition.textsOf;
 
@@ -10,7 +8,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 public class Mails extends BasePage {
@@ -22,7 +19,6 @@ public class Mails extends BasePage {
         super(driver);
     }
 
-
     public void send(String email, String mailSubject) {
         $(byText("COMPOSE")).click();
         $(By.name("to")).sendKeys(email + Keys.ENTER);
@@ -30,9 +26,7 @@ public class Mails extends BasePage {
         $(byText("Send")).click();
     }
 
-
-
-    public  void searchBySubject(String subjectText) {
+    public void searchBySubject(String subjectText) {
         $(By.name("q")).sendKeys("subject: " + subjectText, Keys.ENTER);
     }
 
@@ -40,7 +34,7 @@ public class Mails extends BasePage {
         assertThat(nthElementContainsText(mails, index, emailAttributeText));
     }
 
-    public  void assertMails(String... emailAttributeTexts) {
+    public void assertMails(String... emailAttributeTexts) {
         assertThat(textsOf(mails, emailAttributeTexts));
     }
 
